@@ -21,7 +21,6 @@ package moc.x01on.soh.shared;
  * </p>
  */
 public class FieldVerifier {
-
 	/**
 	 * Verifies that the specified name is valid for our service.
 	 * 
