@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 public class DirectlySwaper implements ISwaper {
 
-	private static final Logger log =
-		Logger.getLogger(DirectlySwaper.class.getName());
+	private static final Logger log = Logger.getLogger(DirectlySwaper.class
+			.getName());
 
 	public void swap(HttpURLConnection swaperConn, HttpServletResponse resp)
 			throws Exception {
@@ -19,7 +19,7 @@ public class DirectlySwaper implements ISwaper {
 		InputStream is = null;
 
 		try {
-			
+
 			is = swaperConn.getInputStream();
 			os = resp.getOutputStream();
 
@@ -30,7 +30,7 @@ public class DirectlySwaper implements ISwaper {
 				os.write(buff, 0, size);
 
 		} finally {
-			
+
 			if (is != null)
 				is.close();
 
@@ -40,7 +40,7 @@ public class DirectlySwaper implements ISwaper {
 			}
 		}
 
-		log.info(String.format("Swap '%s' well done by '%s'.",
-				swaperConn.getURL(), this.getClass().getSimpleName()));
+		log.info(String.format("Swap '%s' well done by '%s'.", swaperConn
+				.getURL(), this.getClass().getSimpleName()));
 	}
 }

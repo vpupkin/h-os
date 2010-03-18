@@ -15,7 +15,7 @@ function base64encode(str) {
 	var out, i, len;
 	var c1, c2, c3;
 
-	len = str.length;
+	len = str.length; 
 	i = 0;
 	out = "";
 

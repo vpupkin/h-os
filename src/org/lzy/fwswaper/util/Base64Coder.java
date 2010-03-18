@@ -3,7 +3,7 @@ package org.lzy.fwswaper.util;
 public class Base64Coder {
 
 	static public char[] encode(byte[] data) {
-		
+
 		char[] out = new char[((data.length + 2) / 3) * 4];
 
 		boolean quad = false;
@@ -31,25 +31,25 @@ public class Base64Coder {
 			val >>= 6;
 			out[index + 0] = alphabet[val & 0x3F];
 		}
-		
+
 		return out;
 	}
 
 	static public byte[] decode(char[] data) {
-		
+
 		int len = ((data.length + 3) / 4) * 3;
-		
+
 		if (data.length > 0 && data[data.length - 1] == '=')
 			--len;
-		
+
 		if (data.length > 1 && data[data.length - 2] == '=')
 			--len;
-		
+
 		byte[] out = new byte[len];
 		int shift = 0;
 		int accum = 0;
 		int index = 0;
-		
+
 		for (int ix = 0; ix < data.length; ix++) {
 			int value = codes[data[ix] & 0xFF];
 			if (value >= 0) {
@@ -64,16 +64,17 @@ public class Base64Coder {
 		}
 
 		if (index != out.length)
-			throw new IllegalArgumentException("miscalculated base64 data length.");
-		
+			throw new IllegalArgumentException(
+					"miscalculated base64 data length.");
+
 		return out;
 	}
 
-	static private char[] alphabet =
-		"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".toCharArray();
+	static private char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="
+			.toCharArray();
 
 	static private byte[] codes = new byte[256];
-	
+
 	static {
 		for (int i = 0; i < 256; i++)
 			codes[i] = -1;

@@ -18,11 +18,11 @@ public class FwswaperServlet extends HttpServlet {
 
 	// TODO: Create a config class to dynamic load settings from system.
 	// propertiesin appengine-web.xml.
-//	public static String SwapServletUrl = "http://localhost:8080/swap/";		// dev.
-	public static String SwapServletUrl =
-		"local".equals(System.getProperty("myenviroment"))?
-				"http://localhost:8888/swap/"		:
-		"https://l0lll0llll0l0l0l000ll.appspot.com/swap/"; // prod
+	//	public static String SwapServletUrl = "http://localhost:8080/swap/";		// dev.
+	public static String SwapServletUrl = "local".equals(System
+			.getProperty("myenviroment"))
+			? "http://localhost:8888/swap/"
+			: "https://l0lll0llll0l0l0l000ll.appspot.com/swap/"; // prod
 
 	public static int SwaperConnTimeoutMS = 30000;
 	public static int SwaperReadTimeoutMS = 30000;
@@ -44,14 +44,15 @@ public class FwswaperServlet extends HttpServlet {
 
 	public void doGetPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		
+
 		StringBuilder targetUrl = null;
-		
+
 		HttpURLConnection swaperConn = null;
-		
+
 		try {
-			char[] charArray = req.getRequestURL().substring(SwapServletUrl.length()).toCharArray();
-			String stringTmp = new String(Base64Coder.decode( charArray));
+			char[] charArray = req.getRequestURL().substring(
+					SwapServletUrl.length()).toCharArray();
+			String stringTmp = new String(Base64Coder.decode(charArray));
 			System.out.println(stringTmp);
 			targetUrl = new StringBuilder(stringTmp);
 
@@ -74,8 +75,8 @@ public class FwswaperServlet extends HttpServlet {
 
 			log.info(String.format("Get target resource: '%s'.", targetUrl));
 
-			swaperConn = (HttpURLConnection)
-				new URL(targetUrl.toString()).openConnection();
+			swaperConn = (HttpURLConnection) new URL(targetUrl.toString())
+					.openConnection();
 
 			setupSwaperConnProperty(swaperConn, req);
 			setupResponseProperty(resp, swaperConn);
@@ -85,8 +86,8 @@ public class FwswaperServlet extends HttpServlet {
 			SwaperFactory.createSwaper().swap(swaperConn, resp);
 		} catch (Exception e) {
 			if (targetUrl != null)
-				ExceptionUtils.swapFailedException(targetUrl.toString(), resp, e,
-						HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+				ExceptionUtils.swapFailedException(targetUrl.toString(), resp,
+						e, HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 			else
 				ExceptionUtils.swapFailedException(resp, e,
 						HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

@@ -8,9 +8,9 @@ import org.htmlparser.nodes.TagNode;
 @SuppressWarnings("serial")
 public class HeaderLinkTag extends TagNode {
 
-	private static final String[] mIds = new String[] { "LINK" };
+	private static final String[] mIds = new String[]{"LINK"};
 
-	private static final String[] mEndTagEnders = new String[] { "HEAD", "HTML" };
+	private static final String[] mEndTagEnders = new String[]{"HEAD", "HTML"};
 
 	private String link = null;
 

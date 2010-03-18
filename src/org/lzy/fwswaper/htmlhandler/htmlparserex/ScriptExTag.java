@@ -13,12 +13,12 @@ public class ScriptExTag extends CompositeTag {
 	/**
 	 * The set of names handled by this tag.
 	 */
-	private static final String[] mIds = new String[] { "SCRIPT" };
+	private static final String[] mIds = new String[]{"SCRIPT"};
 
 	/**
 	 * The set of end tag names that indicate the end of this tag.
 	 */
-	private static final String[] mEndTagEnders = new String[] { "BODY", "HTML" };
+	private static final String[] mEndTagEnders = new String[]{"BODY", "HTML"};
 
 	/**
 	 * Script code if different from the page contents.
