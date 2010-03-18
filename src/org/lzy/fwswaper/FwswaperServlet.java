@@ -50,8 +50,10 @@ public class FwswaperServlet extends HttpServlet {
 		HttpURLConnection swaperConn = null;
 		
 		try {
-			targetUrl = new StringBuilder(new String(Base64Coder.decode(
-							req.getRequestURL().substring(SwapServletUrl.length()).toCharArray())));
+			char[] charArray = req.getRequestURL().substring(SwapServletUrl.length()).toCharArray();
+			String stringTmp = new String(Base64Coder.decode( charArray));
+			System.out.println(stringTmp);
+			targetUrl = new StringBuilder(stringTmp);
 
 			if ((targetUrl.length() > 0) && (req.getQueryString() != null)
 					&& (req.getQueryString().length() > 1)) {
