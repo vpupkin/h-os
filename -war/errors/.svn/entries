@@ -1,40 +1,0 @@
-10
-
-dir
-17
-http://proxy-on-gae.googlecode.com/svn/trunk
-http://proxy-on-gae.googlecode.com/svn
-
-
-
-2009-09-02T15:07:41.949131Z
-17
-chenpu.xp@gmail.com
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-e54c1a20-568a-11de-bbaa-f1a44a2b9d47
-
-GaeProxy
-dir
-
-GaeProxyAgent
-dir
-
-web-procy
-dir
-
-web-proxy
-dir
-
